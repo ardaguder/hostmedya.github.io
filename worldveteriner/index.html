@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Esenyurt World Veteriner Kliniği</title>
+<meta name="description" content="Esenyurt’ta kedi, köpek, kuş ve egzotik hayvanlar için muayene, aşı, cerrahi ve acil veteriner hizmeti. Online randevu alın.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐾</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0F2A3D; --teal:#1F7A8C; --mist:#EAF4F6; --sun:#F2B632; --white:#fff; --muted:#4A6272;
+  --head:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--ink);background:var(--white);line-height:1.6;font-size:17px}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--head);line-height:1.08;letter-spacing:-.02em}
+h2{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;margin-bottom:12px}
+.btn{display:inline-block;font:600 1rem var(--body);padding:14px 26px;border-radius:999px;text-decoration:none;border:2px solid transparent;cursor:pointer}
+.btn-sun{background:var(--sun);color:var(--ink)}
+.btn-sun:hover{background:#ffc94d}
+.btn-line{border-color:var(--ink);color:var(--ink)}
+.btn-line:hover{background:var(--ink);color:var(--white)}
+
+/* top bar */
+.emergency{background:var(--ink);color:var(--white);font-size:.95rem}
+.emergency .wrap{display:flex;gap:16px;justify-content:space-between;align-items:center;padding-top:9px;padding-bottom:9px;flex-wrap:wrap}
+.emergency a{font-weight:600;color:var(--sun);text-decoration:none}
+header.nav{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid #dbe7eb}
+header.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.logo{font:800 1.25rem var(--head);text-decoration:none;letter-spacing:-.02em}
+.logo span{color:var(--teal)}
+nav ul{display:flex;gap:26px;list-style:none;padding:0}
+nav a{text-decoration:none;font-weight:500}
+nav a:hover{color:var(--teal)}
+
+/* hero */
+.hero{background:var(--mist);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;padding-top:72px;padding-bottom:80px}
+.hero h1{font-size:clamp(2.4rem,6vw,4.4rem);font-weight:800}
+.hero p.lead{font-size:1.2rem;max-width:34em;margin:22px 0 30px;color:var(--muted)}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+.badge{position:relative;aspect-ratio:1;max-width:380px;margin-left:auto;width:100%}
+.badge .disc{position:absolute;inset:0;background:var(--teal);border-radius:46% 54% 50% 50%/55% 45% 55% 45%}
+.badge .disc2{position:absolute;inset:14% -6% -6% 14%;background:var(--sun);border-radius:50%;z-index:0;opacity:.9}
+.badge .disc{z-index:1}
+.badge svg{position:absolute;inset:0;margin:auto;width:58%;z-index:2}
+.badge .tag{position:absolute;z-index:3;left:-4%;bottom:10%;background:var(--ink);color:var(--white);padding:12px 18px;border-radius:14px;font-weight:600;font-size:.95rem}
+.badge .tag small{display:block;font-weight:400;opacity:.8}
+
+/* services */
+section{padding:84px 0}
+.intro{max-width:34em;color:var(--muted);margin-bottom:40px}
+.svc{display:grid;grid-template-columns:1fr 1fr;column-gap:56px;list-style:none;padding:0}
+.svc li{padding:22px 0;border-top:2px solid var(--ink)}
+.svc h3{font-size:1.35rem;font-weight:700;margin-bottom:6px}
+.svc p{color:var(--muted);font-size:1rem}
+
+/* info band */
+
+/* booking */
+.book{background:var(--mist)}
+.book .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}
+form{background:var(--white);padding:30px;border-radius:22px;display:grid;gap:18px;border:2px solid var(--ink)}
+label{display:grid;gap:6px;font-weight:600;font-size:.95rem}
+input,select,textarea{font:400 1rem var(--body);padding:12px 14px;border:1.5px solid #a9bcc6;border-radius:10px;background:var(--white);color:var(--ink);width:100%}
+textarea{min-height:96px;resize:vertical}
+form .btn{text-align:center}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.note{font-size:.88rem;color:var(--muted)}
+
+footer a{color:var(--teal);text-underline-offset:3px}
+footer{padding:30px 0;font-size:.9rem;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* contact band */
+.band{background:var(--ink);color:var(--white)}
+.band .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:stretch}
+.band h2{color:var(--white)}
+.band .col{display:flex;flex-direction:column;gap:36px}
+.open-state{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.92rem;background:rgba(255,255,255,.1);padding:6px 14px;border-radius:999px;margin-bottom:14px}
+.open-state i{width:9px;height:9px;border-radius:50%;background:#7a8b97}
+.open-state.on i{background:#3ddc84}
+.open-state.off i{background:#ff7a59}
+.time{font:800 clamp(2.2rem,5vw,3.2rem) var(--head);letter-spacing:-.02em;color:var(--sun);line-height:1}
+.time-sub{margin-top:8px;color:rgba(255,255,255,.8)}
+.contact-list{display:grid;gap:12px;margin-top:18px}
+.contact-list a{display:flex;align-items:center;gap:14px;text-decoration:none;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.18);border-radius:16px;padding:14px 18px;font-weight:600}
+.contact-list a:hover{border-color:var(--sun);background:rgba(255,255,255,.12)}
+.contact-list small{display:block;font-weight:400;color:rgba(255,255,255,.7);font-size:.85rem}
+.contact-list svg{width:22px;height:22px;flex:none;fill:none;stroke:var(--sun);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.contact-list .wapp svg{fill:#25D366;stroke:none}
+.mapbox{position:relative;border-radius:22px;overflow:hidden;min-height:420px;height:100%;border:2px solid rgba(255,255,255,.25);background:#dfe9ec}
+.mapbox svg.bg{position:absolute;inset:0;width:100%;height:100%}
+.mapbox iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:none}
+.mapbox.live iframe{display:block}
+.mapcard{position:absolute;left:14px;right:14px;bottom:14px;z-index:2;background:var(--white);color:var(--ink);border-radius:16px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;box-shadow:0 8px 24px rgba(15,42,61,.25)}
+.mapcard b{display:block;font-family:var(--head);font-size:1.05rem}
+.mapcard span{font-size:.88rem;color:var(--muted)}
+.mapcard .btn{padding:10px 20px;font-size:.95rem}
+.wa{position:fixed;right:calc(20px + env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:20;width:62px;height:62px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 8px 22px rgba(15,42,61,.35);animation:wafloat 3s ease-in-out infinite}
+.wa svg{width:34px;height:34px;fill:#fff}
+.wa::before,.wa::after{content:"";position:absolute;inset:0;border-radius:50%;border:3px solid #25D366;animation:wapulse 2.4s ease-out infinite}
+.wa::after{animation-delay:1.2s}
+.wa:hover{transform:scale(1.08)}
+.wa .wa-label{position:absolute;right:76px;white-space:nowrap;background:var(--ink);color:var(--white);font:600 .9rem var(--body);padding:8px 14px;border-radius:999px;opacity:0;transform:translateX(8px);transition:.2s;pointer-events:none}
+.wa:hover .wa-label,.wa:focus-visible .wa-label{opacity:1;transform:none}
+@keyframes wapulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.7);opacity:0}}
+@keyframes wafloat{0%,100%{translate:0 0}50%{translate:0 -8px}}
+@media (max-width:820px){
+  .mapbox{min-height:340px}
+  nav ul{display:none}
+  .hero .wrap,.band .wrap,.book .wrap,.svc{grid-template-columns:1fr}
+  .hero .wrap{padding-top:44px;padding-bottom:56px}
+  .badge{max-width:260px;margin:10px auto 0}
+  section{padding:60px 0}
+  .row{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.wa,.wa::before,.wa::after{animation:none}}
+</style>
+</head>
+<body>
+
+<div class="emergency">
+  <div class="wrap">
+    <span>Acil durumda hemen arayın.</span>
+    <a href="tel:+905533051122">+90 553 305 11 22</a>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top">Esenyurt <span>World</span> Veteriner</a>
+    <nav aria-label="Ana menü">
+      <ul>
+        <li><a href="#hizmetler">Hizmetler</a></li>
+        <li><a href="#saatler">Saatler ve adres</a></li>
+        <li><a href="#randevu">Randevu</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-sun" href="#randevu">Randevu al</a>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Patili dostunuz için Esenyurt’ta güvenilir veteriner.</h1>
+        <p class="lead">Muayene, aşı, cerrahi ve acil müdahale tek çatı altında. Hayvanınızı tanıyan, size her adımı sade bir dille anlatan bir ekiple çalışırsınız.</p>
+        <div class="cta">
+          <a class="btn btn-sun" href="#randevu">Randevu al</a>
+          <a class="btn btn-line" href="tel:+905533051122">Hemen ara</a>
+        </div>
+      </div>
+      <div class="badge" aria-hidden="true">
+        <div class="disc2"></div>
+        <div class="disc"></div>
+        <svg viewBox="0 0 100 100" fill="#fff"><ellipse cx="50" cy="66" rx="22" ry="18"/><ellipse cx="22" cy="42" rx="9" ry="12" transform="rotate(-20 22 42)"/><ellipse cx="40" cy="26" rx="9" ry="13" transform="rotate(-6 40 26)"/><ellipse cx="60" cy="26" rx="9" ry="13" transform="rotate(6 60 26)"/><ellipse cx="78" cy="42" rx="9" ry="12" transform="rotate(20 78 42)"/></svg>
+        <div class="tag">Aynı gün randevu<small>Müsaitliğe göre</small></div>
+      </div>
+    </div>
+  </div>
+
+  <section id="hizmetler">
+    <div class="wrap">
+      <h2>Hizmetlerimiz</h2>
+      <p class="intro">Rutin kontrolden ameliyata kadar ihtiyaç duyacağınız her şey burada.</p>
+      <ul class="svc">
+        <li><h3>Genel muayene</h3><p>Sağlık kontrolü, kilo takibi ve beslenme önerileri.</p></li>
+        <li><h3>Aşı ve parazit programı</h3><p>Yaşa ve türe göre aşı takvimi, iç ve dış parazit koruması.</p></li>
+        <li><h3>Cerrahi ve kısırlaştırma</h3><p>Steril ortamda, anestezi öncesi kan kontrolüyle güvenli ameliyat.</p></li>
+        <li><h3>Acil müdahale</h3><p>Zehirlenme, kaza ve ani rahatsızlıklarda hızlı ilk müdahale.</p></li>
+        <li><h3>Laboratuvar ve görüntüleme</h3><p>Kan tahlili ve röntgen ile teşhisi aynı gün koymak için.</p></li>
+        <li><h3>Diş bakımı ve kuaför</h3><p>Diş taşı temizliği, tırnak kesimi ve banyo.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band" id="saatler">
+    <div class="wrap">
+      <div class="col">
+        <div>
+          <h2>Çalışma saatleri</h2>
+          <div class="open-state" id="openState"><i></i><span>Her gün açığız</span></div>
+          <div class="time">09:00 – 00:00</div>
+          <p class="time-sub">Haftanın her günü, gece yarısına kadar.</p>
+        </div>
+        <div>
+          <h2>Bize ulaşın</h2>
+          <div class="contact-list">
+            <a href="tel:+905533051122">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+              <span>+90 553 305 11 22<small>Ara</small></span>
+            </a>
+            <a href="tel:+905011532622">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+              <span>+90 501 153 26 22<small>Alternatif hat</small></span>
+            </a>
+            <a class="wapp" href="https://wa.me/905533051122" target="_blank" rel="noopener">
+              <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16.04 3C9.4 3 4 8.4 4 15.03c0 2.12.55 4.18 1.6 6L4 28l7.17-1.88a12 12 0 0 0 4.87 1.02h.01C22.68 27.14 28 21.74 28 15.1 28 8.4 22.68 3 16.04 3zm5.5 14.62c-.3-.15-1.78-.88-2.06-.98-.27-.1-.47-.15-.67.15-.2.3-.77.98-.95 1.18-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.67-2.08-.17-.3-.02-.46.13-.6.14-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.08-.8.38-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.5.7.3 1.26.48 1.7.62.72.23 1.37.2 1.88.12.57-.08 1.78-.73 2.03-1.43.25-.7.25-1.3.17-1.43-.07-.12-.27-.2-.57-.35z"/></svg>
+              <span>WhatsApp<small>Mesaj gönderin</small></span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mapbox" id="mapbox">
+        <svg class="bg" viewBox="0 0 400 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect width="400" height="420" fill="#e4edf0"/>
+          <path d="M0 300 C90 270 150 330 400 280 L400 420 L0 420Z" fill="#cfe3d3"/>
+          <g stroke="#fff" stroke-width="14" fill="none" stroke-linecap="round"><path d="M-10 120 L410 190"/><path d="M120 -10 L200 430"/><path d="M-10 330 L410 260"/></g>
+          <g stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round"><path d="M290 -10 L330 430"/><path d="M-10 220 L410 240"/><path d="M40 -10 L80 430"/></g>
+          <g transform="translate(205 190)"><circle r="26" fill="#1F7A8C" opacity=".2"/><path d="M0 -26 a16 16 0 0 1 16 16 c0 12 -16 28 -16 28 s-16 -16 -16 -28 a16 16 0 0 1 16 -16z" fill="#1F7A8C"/><circle cy="-10" r="6" fill="#fff"/></g>
+        </svg>
+        <iframe id="liveMap" title="Esenyurt World Veteriner Kliniği harita konumu" referrerpolicy="no-referrer-when-downgrade" data-src="https://maps.google.com/maps?q=Esenyurt+World+Veteriner+Klinigi&amp;hl=tr&amp;z=16&amp;ie=UTF8&amp;output=embed"></iframe>
+        <div class="mapcard">
+          <div><b>Esenyurt World Veteriner Kliniği</b><span>Esenyurt, İstanbul</span></div>
+          <a class="btn btn-sun" href="https://www.google.com/maps?rlz=1C1PNBB_enTR1219TR1219&amp;mstk=AUtExfAAJFMkES_Zyn6INfo404iEoqawMSV05uoYIaHXWcyl7pSUoojovsSAYQnNOhOTvxfGSoFpI1pHh1P8XN8KPx_aGi7CBxq_OW7cNMOsAgKwUJFG9pkfXnvhoLF2cNMLxkUJJfcVh2plwBvT67UD0gqDlEbTODk&amp;hl=tr&amp;pvq=Cg0vZy8xMXZ5bTFwNnk3SiFlc2VueXVydCB3b3JsZCB2ZXRlcmluZXIga2xpbmnEn2mAAQGQAQE&amp;fvr=1&amp;vet=10CAAQoqAOahcKEwiosJSRmaiYAxUAAAAAHQAAAAAQFg..i&amp;cs=1&amp;um=1&amp;ie=UTF-8&amp;fb=1&amp;gl=tr&amp;sa=X&amp;ftid=0x14caa12445e01f2b:0xdf3fa0a71d74d588" target="_blank" rel="noopener">Haritada aç</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="book" id="randevu">
+    <div class="wrap">
+      <div>
+        <h2>Randevu alın</h2>
+        <p class="intro">Formu doldurun, mesajınız WhatsApp’ta klinik ekibine ulaşsın. Size en kısa sürede saat önerisiyle dönelim.</p>
+      </div>
+      <form id="f">
+        <div class="row">
+          <label>Adınız<input name="ad" required autocomplete="name"></label>
+          <label>Hayvanın adı<input name="pet" required></label>
+        </div>
+        <div class="row">
+          <label>Hayvan türü
+            <select name="tur"><option>Kedi</option><option>Köpek</option><option>Kuş</option><option>Tavşan</option><option>Diğer</option></select>
+          </label>
+          <label>Hizmet
+            <select name="hizmet"><option>Genel muayene</option><option>Aşı</option><option>Cerrahi / kısırlaştırma</option><option>Diş bakımı</option><option>Diğer</option></select>
+          </label>
+        </div>
+        <label>Şikâyet veya not<textarea name="not"></textarea></label>
+        <a class="btn btn-sun" id="waSend" href="https://wa.me/905533051122" target="_blank" rel="noopener">WhatsApp ile gönder</a>
+        <p class="note">Acil bir durumda form doldurmayın, doğrudan arayın.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Esenyurt World Veteriner Kliniği</span>
+    <span>Bu site <a href="https://hostmedya.com.tr/" target="_blank" rel="noopener"><b>Host Medya</b></a> tarafından tasarlanmıştır.</span>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/905533051122?text=Merhaba%2C%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener" aria-label="WhatsApp ile yazın">
+  <span class="wa-label">WhatsApp ile yazın</span>
+  <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16.04 3C9.4 3 4 8.4 4 15.03c0 2.12.55 4.18 1.6 6L4 28l7.17-1.88a12 12 0 0 0 4.87 1.02h.01C22.68 27.14 28 21.74 28 15.1 28 8.4 22.68 3 16.04 3zm0 22.1h-.01a10 10 0 0 1-5.1-1.4l-.37-.22-3.8 1 1.02-3.7-.24-.38a9.9 9.9 0 0 1-1.52-5.3c0-5.5 4.5-9.97 10.03-9.97 2.68 0 5.2 1.04 7.08 2.93a9.9 9.9 0 0 1 2.93 7.05c0 5.5-4.5 9.99-10.02 9.99zm5.5-7.48c-.3-.15-1.78-.88-2.06-.98-.27-.1-.47-.15-.67.15-.2.3-.77.98-.95 1.18-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.67-2.08-.17-.3-.02-.46.13-.6.14-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.08-.8.38-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.5.7.3 1.26.48 1.7.62.72.23 1.37.2 1.88.12.57-.08 1.78-.73 2.03-1.43.25-.7.25-1.3.17-1.43-.07-.12-.27-.2-.57-.35z"/></svg>
+</a>
+
+<script>
+var WHATSAPP = "905533051122";
+var form = document.getElementById("f");
+var send = document.getElementById("waSend");
+function buildLink(){
+  var d = new FormData(form);
+  var msg = "Merhaba, randevu almak istiyorum.\n" +
+    "Ad: " + (d.get("ad") || "-") + "\n" +
+    "Hayvan: " + (d.get("pet") || "-") + " (" + d.get("tur") + ")\n" +
+    "Hizmet: " + d.get("hizmet") +
+    (d.get("not") ? "\nNot: " + d.get("not") : "");
+  return "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(msg);
+}
+function sync(){ send.href = buildLink(); }
+form.addEventListener("input", sync);
+form.addEventListener("change", sync);
+sync();
+send.addEventListener("click", function(e){
+  if(!form.checkValidity()){ e.preventDefault(); form.reportValidity(); return; }
+  sync();
+});
+form.addEventListener("submit", function(e){ e.preventDefault(); send.click(); });
+
+(function(){
+  var f=document.getElementById("liveMap"), b=document.getElementById("mapbox");
+  if(f && location.protocol==="https:"){ f.src=f.getAttribute("data-src"); b.className+=" live"; }
+})();
+(function(){
+  var el=document.getElementById("openState"); if(!el) return;
+  var h=parseInt(new Intl.DateTimeFormat("tr-TR",{hour:"numeric",hour12:false,timeZone:"Europe/Istanbul"}).format(new Date()),10);
+  var open=h>=9&&h<24;
+  el.className="open-state "+(open?"on":"off");
+  el.lastElementChild.textContent=open?"Şu an açık":"Şu an kapalı, 09:00’da açılır";
+})();
+</script>
+</body>
+</html>
