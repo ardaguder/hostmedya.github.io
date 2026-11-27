@@ -94,7 +94,7 @@ h2{font-family:var(--display);font-weight:800;font-size:clamp(1.9rem,4vw,2.9rem)
 
 /* contact */
 .contact{background:var(--mist)}
-.contact .grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:stretch}
+.contact .grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:stretch}
 .info p.big{font-size:1.1rem;color:var(--ink-soft);margin-top:14px;max-width:32ch}
 .rows{margin-top:28px;display:grid;gap:14px}
 .row{display:flex;gap:14px;align-items:center;text-decoration:none;background:var(--paper);padding:16px 18px;border-radius:20px;font-weight:600}
@@ -191,7 +191,13 @@ main{overflow-x:clip}
 .list li:hover .ic{animation:shake .5s}
 .logo:hover i{animation:shake .5s}
 .btn-wa{position:relative}
-.wa-float{animation:pulse 2.6s 2s infinite}
+@keyframes ring{0%,32%,100%{transform:rotate(0)}4%{transform:rotate(-20deg)}8%{transform:rotate(18deg)}12%{transform:rotate(-16deg)}16%{transform:rotate(14deg)}20%{transform:rotate(-8deg)}24%{transform:rotate(6deg)}28%{transform:rotate(-3deg)}}
+@keyframes hop{0%,40%,100%{transform:translateY(0)}8%{transform:translateY(-9px)}16%{transform:translateY(0)}22%{transform:translateY(-4px)}28%{transform:translateY(0)}}
+@keyframes shine{0%,60%{transform:translateX(-130%) skewX(-20deg)}100%{transform:translateX(330%) skewX(-20deg)}}
+.wa-float{overflow:hidden;animation:popin .6s 1.2s cubic-bezier(.3,1.5,.5,1) backwards,pulse 2.6s 2s infinite}
+.wa-float::after{content:"";position:absolute;top:0;bottom:0;left:0;width:34%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);animation:shine 4.5s 3s infinite;pointer-events:none}
+.wa-float svg{transform-origin:50% 60%;animation:ring 5s 2.6s infinite}
+.wa-float span{animation:hop 5s 2.6s infinite}
 .row{transition:transform .2s,background .2s}
 .row:hover{transform:translateX(6px);background:#fff}
 
@@ -202,13 +208,50 @@ main{overflow-x:clip}
   .js .rv{opacity:1;transform:none}
   .paw{display:none}
 }
+
+.row.static:hover{transform:none;background:var(--paper)}
+
+/* icons */
+.ico{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.ico.fill{fill:currentColor;stroke:none}
+.logo i svg{width:17px;height:17px;color:var(--ink)}
+.track span svg{width:24px;height:24px;vertical-align:-3px}
+.paw{color:var(--apricot)}
+.paw svg{width:34px;height:34px}
+.list .ic{color:var(--ink)}
+.list .ic svg{width:26px;height:26px}
+.row .i{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:var(--mist);color:var(--ink);flex:none}
+.row .i svg{width:22px;height:22px}
+.rows .row:first-child .i{background:var(--wa);color:#fff}
+.rows .row:nth-child(2) .i{background:#4C9BD6;color:#fff}
+.rows .row:nth-child(3) .i{background:var(--apricot);color:#fff}
+.rows .row:nth-child(4) .i{background:linear-gradient(45deg,#F9A03F,#E1306C 55%,#833AB4);color:#fff}
+.rows .row:nth-child(5) .i{background:#E8574A;color:#fff}
+.visit{display:grid;grid-template-columns:1.1fr .9fr;gap:16px;align-self:center}
+.visit .map{min-height:0}
+.shop{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:490/601;background:#cfd8dd}
+.shop img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+.shop figcaption{position:absolute;left:14px;bottom:14px;background:rgba(255,255,255,.94);padding:8px 16px;border-radius:999px;font-weight:600;font-size:.92rem}
+@media (max-width:860px){.visit{grid-template-columns:1fr}.visit .map{min-height:320px}}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<symbol id="i-paw" viewBox="0 0 26 26"><ellipse cx="5.5" cy="11" rx="2.2" ry="2.8"/><ellipse cx="10" cy="6" rx="2.2" ry="2.8"/><ellipse cx="16" cy="6" rx="2.2" ry="2.8"/><ellipse cx="20.5" cy="11" rx="2.2" ry="2.8"/><path d="M13 12c3.4 0 6.6 3.8 6.6 6.8 0 2.1-1.6 3.2-3.3 3.2-1.4 0-2.2-.8-3.3-.8s-1.9.8-3.3.8c-1.7 0-3.3-1.1-3.3-3.2C6.4 15.8 9.6 12 13 12z"/></symbol>
+<symbol id="i-wa" viewBox="0 0 32 32"><path d="M16.04 3C9.4 3 4 8.38 4 15.02c0 2.12.55 4.18 1.6 6L4 28l7.17-1.88a12.02 12.02 0 0 0 4.87 1.02h.01C22.68 27.14 28 21.76 28 15.12 28 8.4 22.68 3 16.04 3Zm0 21.98h-.01a10 10 0 0 1-5.1-1.4l-.37-.22-4.25 1.12 1.13-4.14-.24-.38a9.96 9.96 0 0 1-1.54-5.3c0-5.5 4.5-9.98 10.03-9.98 5.52 0 10.02 4.48 10.02 9.98 0 5.52-4.5 10.32-9.67 10.32Zm5.5-7.46c-.3-.15-1.78-.88-2.06-.98-.28-.1-.48-.15-.68.15-.2.3-.78.98-.95 1.18-.18.2-.35.22-.65.08-.3-.15-1.28-.47-2.43-1.5-.9-.8-1.5-1.8-1.68-2.1-.18-.3-.02-.46.13-.6.14-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.68-1.64-.93-2.25-.25-.58-.5-.5-.68-.5h-.58c-.2 0-.53.08-.8.38-.28.3-1.05 1.03-1.05 2.5s1.08 2.9 1.23 3.1c.15.2 2.1 3.2 5.08 4.5.7.3 1.26.48 1.7.62.72.23 1.37.2 1.88.12.58-.08 1.78-.73 2.03-1.43.25-.7.25-1.3.18-1.43-.08-.12-.28-.2-.58-.35Z"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+<symbol id="i-insta" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+<symbol id="i-scissors" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></symbol>
+<symbol id="i-drops" viewBox="0 0 24 24"><path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"/><path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97"/></symbol>
+<symbol id="i-bag" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></symbol>
+<symbol id="i-home" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></symbol>
+</defs></svg>
 
 <header>
   <div class="wrap bar">
-    <a class="logo" href="#top"><i aria-hidden="true">🐾</i>Bahçeşehir PetLios</a>
+    <a class="logo" href="#top"><i aria-hidden="true"><svg class="ico fill" aria-hidden="true"><use href="#i-paw"/></svg></i>Bahçeşehir PetLios</a>
     <nav aria-label="Ana menü">
       <a href="#hizmetler">Hizmetler</a>
       <a href="#galeri">Galeri</a>
@@ -221,7 +264,7 @@ main{overflow-x:clip}
 
 <main id="top">
   <section class="hero">
-    <span class="paw" aria-hidden="true">🐾</span><span class="paw" aria-hidden="true">🐾</span><span class="paw" aria-hidden="true">🐾</span><span class="paw" aria-hidden="true">🐾</span><span class="paw" aria-hidden="true">🐾</span>
+    <span class="paw" aria-hidden="true"><svg class="ico fill" aria-hidden="true"><use href="#i-paw"/></svg></span><span class="paw" aria-hidden="true"><svg class="ico fill" aria-hidden="true"><use href="#i-paw"/></svg></span><span class="paw" aria-hidden="true"><svg class="ico fill" aria-hidden="true"><use href="#i-paw"/></svg></span><span class="paw" aria-hidden="true"><svg class="ico fill" aria-hidden="true"><use href="#i-paw"/></svg></span><span class="paw" aria-hidden="true"><svg class="ico fill" aria-hidden="true"><use href="#i-paw"/></svg></span>
     <div class="wrap">
       <div>
         <h1>Sevimli dostlarınız bize emanet</h1>
@@ -242,7 +285,7 @@ main{overflow-x:clip}
     </div>
   </section>
 
-  <div class="strip" aria-hidden="true"><div class="track"><span>Tıraş</span><span>🐾</span><span>Banyo</span><span>🐾</span><span>Petshop</span><span>🐾</span><span>Pet otel</span><span>🐾</span><span>Tıraş</span><span>🐾</span><span>Banyo</span><span>🐾</span><span>Petshop</span><span>🐾</span><span>Pet otel</span><span>🐾</span><span>Tıraş</span><span>🐾</span><span>Banyo</span><span>🐾</span><span>Petshop</span><span>🐾</span><span>Pet otel</span><span>🐾</span><span>Tıraş</span><span>🐾</span><span>Banyo</span><span>🐾</span><span>Petshop</span><span>🐾</span><span>Pet otel</span><span>🐾</span></div></div>
+  <div class="strip" aria-hidden="true"><div class="track"><span>Tıraş</span><span><svg class="ico fill" aria-hidden="true"><use href="#i-paw"/></svg></span><span>Banyo</span><span><svg class="ico fill" aria-hidden="true"><use href="#i-paw"/></svg></span><span>Petshop</span><span><svg class="ico fill" aria-hidden="true"><use href="#i-paw"/></svg></span><span>Pet otel</span><span><svg class="ico fill" aria-hidden="true"><use href="#i-paw"/></svg></span><span>Tıraş</span><span><svg class="ico fill" aria-hidden="true"><use href="#i-paw"/></svg></span><span>Banyo</span><span><svg class="ico fill" aria-hidden="true"><use href="#i-paw"/></svg></span><span>Petshop</span><span><svg class="ico fill" aria-hidden="true"><use href="#i-paw"/></svg></span><span>Pet otel</span><span><svg class="ico fill" aria-hidden="true"><use href="#i-paw"/></svg></span><span>Tıraş</span><span><svg class="ico fill" aria-hidden="true"><use href="#i-paw"/></svg></span><span>Banyo</span><span><svg class="ico fill" aria-hidden="true"><use href="#i-paw"/></svg></span><span>Petshop</span><span><svg class="ico fill" aria-hidden="true"><use href="#i-paw"/></svg></span><span>Pet otel</span><span><svg class="ico fill" aria-hidden="true"><use href="#i-paw"/></svg></span><span>Tıraş</span><span><svg class="ico fill" aria-hidden="true"><use href="#i-paw"/></svg></span><span>Banyo</span><span><svg class="ico fill" aria-hidden="true"><use href="#i-paw"/></svg></span><span>Petshop</span><span><svg class="ico fill" aria-hidden="true"><use href="#i-paw"/></svg></span><span>Pet otel</span><span><svg class="ico fill" aria-hidden="true"><use href="#i-paw"/></svg></span></div></div>
 
   <section class="services" id="hizmetler">
     <div class="wrap grid">
@@ -252,10 +295,10 @@ main{overflow-x:clip}
         <img src="shihtzu.webp" alt="Tıraş sonrası bembeyaz shih tzu" loading="lazy">
       </div>
       <ul class="list" data-stagger>
-        <li><span class="ic" aria-hidden="true">✂️</span><h3>Tıraş</h3><p>Irkına ve tüy yapısına uygun, düzenli ve şirin kesimler.</p></li>
-        <li><span class="ic" aria-hidden="true">🛁</span><h3>Banyo</h3><p>Tüy tipine uygun ürünlerle yıkama ve kurulama.</p></li>
-        <li><span class="ic" aria-hidden="true">🦴</span><h3>Petshop</h3><p>Mama, aksesuar ve günlük bakım ürünleri.</p></li>
-        <li><span class="ic" aria-hidden="true">🏠</span><h3>Pet otel</h3><p>Siz yokken dostunuz güvenli ve rahat bir ortamda ağırlanır.</p></li>
+        <li><span class="ic" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-scissors"/></svg></span><h3>Tıraş</h3><p>Irkına ve tüy yapısına uygun, düzenli ve şirin kesimler.</p></li>
+        <li><span class="ic" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-drops"/></svg></span><h3>Banyo</h3><p>Tüy tipine uygun ürünlerle yıkama ve kurulama.</p></li>
+        <li><span class="ic" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-bag"/></svg></span><h3>Petshop</h3><p>Mama, aksesuar ve günlük bakım ürünleri.</p></li>
+        <li><span class="ic" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-home"/></svg></span><h3>Pet otel</h3><p>Siz yokken dostunuz güvenli ve rahat bir ortamda ağırlanır.</p></li>
       </ul>
     </div>
   </section>
@@ -299,14 +342,18 @@ main{overflow-x:clip}
         <h2>Bize ulaşın</h2>
         <p class="big">Randevu ve fiyat bilgisi için WhatsApp’tan yazabilir ya da arayabilirsiniz.</p>
         <div class="rows" data-stagger>
-          <a class="row" href="https://wa.me/905382007598?text=Merhaba%2C%20randevu%20almak%20istiyorum." target="_blank" rel="noopener"><span class="i">💬</span><span>Hemen randevu al<small>WhatsApp: 0538 200 75 98</small></span></a>
-          <a class="row" href="tel:+905382007598"><span class="i">📞</span><span>Telefon<small>0538 200 75 98</small></span></a>
-          <a class="row" href="https://www.instagram.com/liospetkuafor/" target="_blank" rel="noopener"><span class="i">📷</span><span>Instagram<small>@liospetkuafor</small></span></a>
-          <a class="row" href="https://maps.app.goo.gl/n6jwFkf7iyX6t8SB8" target="_blank" rel="noopener"><span class="i">📍</span><span>Yol tarifi al<small>Google Haritalar’da aç</small></span></a>
+          <a class="row" href="https://wa.me/905382007598?text=Merhaba%2C%20randevu%20almak%20istiyorum." target="_blank" rel="noopener"><span class="i"><svg class="ico fill" aria-hidden="true"><use href="#i-wa"/></svg></span><span>Hemen randevu al</span></a>
+          <a class="row" href="tel:+905382007598"><span class="i"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg></span><span>Telefon<small>0538 200 75 98</small></span></a>
+          <div class="row static"><span class="i"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg></span><span>Çalışma saatleri<small>09:00 – 19:30</small></span></div>
+          <a class="row" href="https://www.instagram.com/liospetkuafor/" target="_blank" rel="noopener"><span class="i"><svg class="ico" aria-hidden="true"><use href="#i-insta"/></svg></span><span>Instagram<small>@liospetkuafor</small></span></a>
+          <a class="row" href="https://maps.app.goo.gl/n6jwFkf7iyX6t8SB8" target="_blank" rel="noopener"><span class="i"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg></span><span>Yol tarifi al<small>Google Haritalar’da aç</small></span></a>
         </div>
       </div>
-      <div class="map rv">
-        <iframe title="Bahçeşehir PetLios harita konumu" src="https://maps.google.com/maps?q=41.0660357,28.6903254&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      <div class="visit">
+        <figure class="shop rv"><img src="storefront.webp" alt="Bahçeşehir PetLios dış cephe ve tabela" width="490" height="601" loading="lazy"><figcaption>Tabelamızı arayın</figcaption></figure>
+        <div class="map rv">
+          <iframe title="Bahçeşehir PetLios harita konumu" src="https://maps.google.com/maps?q=41.0660357,28.6903254&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
       </div>
     </div>
   </section>
@@ -320,7 +367,7 @@ main{overflow-x:clip}
 </footer>
 
 <a class="wa-float" href="https://wa.me/905382007598?text=Merhaba%2C%20randevu%20almak%20istiyorum." target="_blank" rel="noopener" aria-label="WhatsApp ile hemen randevu al">
-  <svg viewBox="0 0 32 32" fill="#fff" aria-hidden="true"><path d="M16.04 3C9.4 3 4 8.38 4 15.02c0 2.12.55 4.18 1.6 6L4 28l7.17-1.88a12.02 12.02 0 0 0 4.87 1.02h.01C22.68 27.14 28 21.76 28 15.12 28 8.4 22.68 3 16.04 3Zm0 21.98h-.01a10 10 0 0 1-5.1-1.4l-.37-.22-4.25 1.12 1.13-4.14-.24-.38a9.96 9.96 0 0 1-1.54-5.3c0-5.5 4.5-9.98 10.03-9.98 5.52 0 10.02 4.48 10.02 9.98 0 5.52-4.5 10.32-9.67 10.32Zm5.5-7.46c-.3-.15-1.78-.88-2.06-.98-.28-.1-.48-.15-.68.15-.2.3-.78.98-.95 1.18-.18.2-.35.22-.65.08-.3-.15-1.28-.47-2.43-1.5-.9-.8-1.5-1.8-1.68-2.1-.18-.3-.02-.46.13-.6.14-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.68-1.64-.93-2.25-.25-.58-.5-.5-.68-.5h-.58c-.2 0-.53.08-.8.38-.28.3-1.05 1.03-1.05 2.5s1.08 2.9 1.23 3.1c.15.2 2.1 3.2 5.08 4.5.7.3 1.26.48 1.7.62.72.23 1.37.2 1.88.12.58-.08 1.78-.73 2.03-1.43.25-.7.25-1.3.18-1.43-.08-.12-.28-.2-.58-.35Z"/></svg>
+  <svg viewBox="0 0 32 32" fill="#fff" aria-hidden="true"><use href="#i-wa"/></svg>
   <span>Hemen randevu al</span>
 </a>
 
