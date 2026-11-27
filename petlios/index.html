@@ -3,15 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Lios Pet Kuaför | Tıraş, Banyo, Petshop ve Pet Otel – Bahçeşehir</title>
+<title>Bahçeşehir PetLios | Pet Kuaför, Pet Otel ve Petshop</title>
 <meta name="description" content="Sevimli dostlarınız bize emanet. Bahçeşehir’de köpek ve kedi tıraşı, banyo, petshop ve pet otel hizmetleri. WhatsApp ile hemen yazın.">
-<meta property="og:title" content="Lios Pet Kuaför">
+<meta property="og:title" content="Bahçeşehir PetLios">
 <meta property="og:description" content="Sevimli dostlarınız bize emanet. Tıraş, banyo, petshop ve pet otel.">
 <meta property="og:image" content="poodle-gri.webp">
 <meta name="theme-color" content="#1F2A33">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add("js")</script>
 <style>
 :root{
   --ink:#1F2A33; --ink-soft:#4A5863; --mist:#E4EBEF; --paper:#F5F8F9;
@@ -61,7 +62,7 @@ h1{font-family:var(--display);font-weight:800;font-size:clamp(2.6rem,6.2vw,4.9re
 /* services */
 section{padding:72px 0}
 h2{font-family:var(--display);font-weight:800;font-size:clamp(1.9rem,4vw,2.9rem);letter-spacing:-.03em;line-height:1.08}
-.services{background:var(--ink);color:#fff;border-radius:var(--r) var(--r) 0 0}
+.services{background:var(--ink);color:#fff;}
 .services .grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}
 .services .intro p{margin-top:16px;color:#B9C6CF;max-width:32ch}
 .services .intro img{margin-top:32px;border-radius:var(--r);aspect-ratio:4/3.4;object-fit:cover;width:100%;object-position:50% 30%}
@@ -126,35 +127,107 @@ footer a{color:#fff}
 @media (max-width:480px){
   body{font-size:16px}
   .btn{width:100%;justify-content:center}
-  .wa-float span{display:none}
-  .wa-float{padding:15px}
-  .logo{font-size:1.2rem}
+  .wa-float{padding:13px 18px 13px 14px;font-size:.95rem}
+  .logo{font-size:1.1rem}
+  .call .num{display:none}
 }
-@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* reviews */
+.reviews-head{margin-bottom:34px;max-width:34ch}
+.reviews-head p{color:var(--ink-soft);margin-top:10px}
+.reviews{columns:3;column-gap:18px}
+.rev{break-inside:avoid;background:#fff;border-radius:var(--r);padding:26px 24px 22px;margin-bottom:18px}
+.stars{color:var(--apricot);letter-spacing:3px;font-size:1.05rem}
+.rev p{margin-top:12px;font-size:.98rem;color:var(--ink)}
+.who{display:flex;align-items:center;gap:12px;margin-top:18px;padding-top:16px;border-top:1px solid var(--mist)}
+.av{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-weight:800;color:#fff;flex:none}
+.who b{display:block;line-height:1.2}
+.who small{color:var(--ink-soft);font-size:.82rem}
+.rev:nth-child(6n+1) .av{background:var(--tongue)}
+.rev:nth-child(6n+2) .av{background:#6FA8CF}
+.rev:nth-child(6n+3) .av{background:var(--apricot)}
+.rev:nth-child(6n+4) .av{background:#7FB36B}
+.rev:nth-child(6n+5) .av{background:#9A86C9}
+.rev:nth-child(6n+6) .av{background:#E07A5F}
+
+/* motion */
+.hero{position:relative}
+.hero .wrap{position:relative;z-index:1}
+@keyframes rise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+@keyframes unveil{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes popin{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}
+@keyframes tagin{from{opacity:0;transform:rotate(6deg) scale(.5)}to{opacity:1;transform:rotate(6deg) scale(1)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+@keyframes wiggle{0%,100%{transform:rotate(6deg)}50%{transform:rotate(-3deg)}}
+@keyframes march{to{transform:translateX(-50%)}}
+@keyframes pulse{0%{box-shadow:0 10px 28px rgba(31,175,90,.45),0 0 0 0 rgba(31,175,90,.5)}70%,100%{box-shadow:0 10px 28px rgba(31,175,90,.45),0 0 0 20px rgba(31,175,90,0)}}
+@keyframes drift{0%{opacity:0;transform:translate(0,0) rotate(var(--r))}15%{opacity:.55}80%{opacity:.35}100%{opacity:0;transform:translate(var(--x),var(--y)) rotate(var(--r))}}
+@keyframes zoomy{from{transform:scale(1.18)}to{transform:scale(1)}}
+@keyframes shake{0%,100%{transform:rotate(0)}25%{transform:rotate(-12deg)}60%{transform:rotate(10deg)}}
+
+.hero h1{animation:rise .8s .05s cubic-bezier(.2,.7,.2,1) both}
+.hero .lead{animation:rise .8s .25s cubic-bezier(.2,.7,.2,1) both}
+.hero .cta{animation:rise .8s .4s cubic-bezier(.2,.7,.2,1) both}
+.hero .chips{animation:rise .8s .55s cubic-bezier(.2,.7,.2,1) both}
+.stage .big{animation:unveil 1.1s .15s cubic-bezier(.65,0,.2,1) both}
+.stage .big img{animation:zoomy 1.6s .15s cubic-bezier(.2,.7,.2,1) both}
+.stage .small{animation:popin .6s .95s cubic-bezier(.3,1.5,.5,1) both,bob 5s 1.7s ease-in-out infinite}
+.tag{animation:tagin .6s 1.25s cubic-bezier(.3,1.5,.5,1) both,wiggle 3.2s 2s ease-in-out infinite}
+.paw{position:absolute;z-index:0;pointer-events:none;font-size:2rem;opacity:0;animation:drift 9s ease-in-out infinite}
+.paw:nth-of-type(1){left:3%;top:72%;--r:-20deg;--x:60px;--y:-140px}
+.paw:nth-of-type(2){left:44%;top:88%;--r:15deg;--x:-40px;--y:-160px;animation-delay:2.2s}
+.paw:nth-of-type(3){left:88%;top:78%;--r:25deg;--x:-70px;--y:-150px;animation-delay:4.4s}
+.paw:nth-of-type(4){left:22%;top:92%;--r:-10deg;--x:50px;--y:-170px;animation-delay:6.2s}
+.paw:nth-of-type(5){left:66%;top:94%;--r:12deg;--x:30px;--y:-150px;animation-delay:7.6s}
+
+main{overflow-x:clip}
+.strip{background:var(--apricot);color:var(--ink);overflow:hidden;padding:16px 0;transform:rotate(-1.2deg);margin:0 -10px;position:relative;z-index:2}
+.track{display:flex;width:max-content;animation:march 24s linear infinite}
+.track span{font-family:var(--display);font-weight:800;font-size:1.6rem;letter-spacing:-.02em;padding:0 22px;white-space:nowrap}
+.strip:hover .track{animation-play-state:paused}
+
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.js .rv.in{opacity:1;transform:none}
+.list li:hover .ic{animation:shake .5s}
+.logo:hover i{animation:shake .5s}
+.btn-wa{position:relative}
+.wa-float{animation:pulse 2.6s 2s infinite}
+.row{transition:transform .2s,background .2s}
+.row:hover{transform:translateX(6px);background:#fff}
+
+@media (max-width:980px){.reviews{columns:2}}
+@media (max-width:620px){.reviews{columns:1}.track span{font-size:1.3rem}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .rv{opacity:1;transform:none}
+  .paw{display:none}
+}
 </style>
 </head>
 <body>
 
 <header>
   <div class="wrap bar">
-    <a class="logo" href="#top"><i aria-hidden="true">🐾</i>Lios Pet Kuaför</a>
+    <a class="logo" href="#top"><i aria-hidden="true">🐾</i>Bahçeşehir PetLios</a>
     <nav aria-label="Ana menü">
       <a href="#hizmetler">Hizmetler</a>
       <a href="#galeri">Galeri</a>
+      <a href="#yorumlar">Yorumlar</a>
       <a href="#iletisim">İletişim</a>
     </nav>
-    <a class="call" href="tel:+905382007598">Ara: 0538 200 75 98</a>
+    <a class="call" href="tel:+905382007598">Ara<span class="num">: 0538 200 75 98</span></a>
   </div>
 </header>
 
 <main id="top">
   <section class="hero">
+    <span class="paw" aria-hidden="true">🐾</span><span class="paw" aria-hidden="true">🐾</span><span class="paw" aria-hidden="true">🐾</span><span class="paw" aria-hidden="true">🐾</span><span class="paw" aria-hidden="true">🐾</span>
     <div class="wrap">
       <div>
         <h1>Sevimli dostlarınız bize emanet</h1>
         <p class="lead">Tıraş, banyo, petshop ve pet otel hizmetleriyle Bahçeşehir’de yanınızdayız.</p>
         <div class="cta">
-          <a class="btn btn-wa" href="https://wa.me/905382007598?text=Merhaba%2C%20Lios%20Pet%20Kuaf%C3%B6r%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener">WhatsApp’tan yaz</a>
+          <a class="btn btn-wa" href="https://wa.me/905382007598?text=Merhaba%2C%20randevu%20almak%20istiyorum." target="_blank" rel="noopener">Hemen randevu al</a>
           <a class="btn btn-line" href="tel:+905382007598">Hemen ara</a>
         </div>
         <ul class="chips" aria-label="Hizmetler">
@@ -169,14 +242,16 @@ footer a{color:#fff}
     </div>
   </section>
 
+  <div class="strip" aria-hidden="true"><div class="track"><span>Tıraş</span><span>🐾</span><span>Banyo</span><span>🐾</span><span>Petshop</span><span>🐾</span><span>Pet otel</span><span>🐾</span><span>Tıraş</span><span>🐾</span><span>Banyo</span><span>🐾</span><span>Petshop</span><span>🐾</span><span>Pet otel</span><span>🐾</span><span>Tıraş</span><span>🐾</span><span>Banyo</span><span>🐾</span><span>Petshop</span><span>🐾</span><span>Pet otel</span><span>🐾</span><span>Tıraş</span><span>🐾</span><span>Banyo</span><span>🐾</span><span>Petshop</span><span>🐾</span><span>Pet otel</span><span>🐾</span></div></div>
+
   <section class="services" id="hizmetler">
     <div class="wrap grid">
-      <div class="intro">
+      <div class="intro rv">
         <h2>Dostunuz için her şey tek yerde</h2>
         <p>Bakım, alışveriş ve konaklama için ayrı ayrı yer aramanıza gerek yok.</p>
         <img src="shihtzu.webp" alt="Tıraş sonrası bembeyaz shih tzu" loading="lazy">
       </div>
-      <ul class="list">
+      <ul class="list" data-stagger>
         <li><span class="ic" aria-hidden="true">✂️</span><h3>Tıraş</h3><p>Irkına ve tüy yapısına uygun, düzenli ve şirin kesimler.</p></li>
         <li><span class="ic" aria-hidden="true">🛁</span><h3>Banyo</h3><p>Tüy tipine uygun ürünlerle yıkama ve kurulama.</p></li>
         <li><span class="ic" aria-hidden="true">🦴</span><h3>Petshop</h3><p>Mama, aksesuar ve günlük bakım ürünleri.</p></li>
@@ -187,11 +262,11 @@ footer a{color:#fff}
 
   <section id="galeri">
     <div class="wrap">
-      <div class="gal-head">
+      <div class="gal-head rv">
         <h2>Tıraştan çıkanlar</h2>
         <p>Misafirlerimizden bazıları. Daha fazlası için <a href="https://www.instagram.com/liospetkuafor/" target="_blank" rel="noopener"><strong>Instagram sayfamıza</strong></a> göz atın.</p>
       </div>
-      <div class="gallery">
+      <div class="gallery" data-stagger>
         <figure><img src="poodle-kahve.webp" alt="Kahverengi poodle, yuvarlak kesim" loading="lazy"></figure>
         <figure><img src="pomeranian-2.webp" alt="Gülümseyen pomeranian" loading="lazy"></figure>
         <figure><img src="pomeranian-1.webp" alt="Tıraşlı pomeranian portre" loading="lazy"></figure>
@@ -201,20 +276,37 @@ footer a{color:#fff}
     </div>
   </section>
 
+  <section id="yorumlar">
+    <div class="wrap">
+      <div class="reviews-head rv">
+        <h2>Misafirlerimiz ne diyor?</h2>
+        <p>Google’da bıraktıkları yorumlardan bazıları.</p>
+      </div>
+      <div class="reviews" data-stagger>
+        <article class="rev"><div class="stars" aria-label="5 yıldız">★★★★★</div><p>Oğlumuzu geri alırken çok mutluydu, bıraktığımız gibi bulmak her zaman başımıza gelmiyor. Kaldığı süre boyunca ilgi ve sevgi gördüğü çok belliydi. Otel hizmetinin yanı sıra kuaför hizmetlerinin olması da avantaj. Her iki hizmetten de çok memnun kaldık, teşekkür ederiz 💝</p><div class="who"><span class="av" aria-hidden="true">Y</span><div><b>Yağmur Öktemli Y.</b><small>Google yorumu</small></div></div></article>
+        <article class="rev"><div class="stars" aria-label="5 yıldız">★★★★★</div><p>Bugün köpeğimin ilk tıraşı için oradaydık, içeriye girdiğimiz an o güveni hissettim. Güler yüzleri ve ilgileri için çok çok teşekkür ediyorum. Çok memnun kaldı, köpeğim tıraştan çok mutlu bir şekilde çıktı. Her kuruşunu sonuna kadar hak eden bir yer olduğunu düşünüyorum. Bundan sonra şahsi kuaförümüzdür Petlios 🥰</p><div class="who"><span class="av" aria-hidden="true">G</span><div><b>Gül Melis S.</b><small>Google yorumu</small></div></div></article>
+        <article class="rev"><div class="stars" aria-label="5 yıldız">★★★★★</div><p>Bugün pet kuaförüne gittim ve aldığım hizmetten gerçekten çok memnun kaldım. Hem çok güler yüzlü hem de işlerini büyük bir titizlikle yapıyorlar. Evcil dostuma gösterdikleri ilgi ve özen için ayrıca teşekkür ederim. Özellikle Sertan Bey’e profesyonelliği, ilgisi ve temiz çalışması için çok teşekkür ederim. Gönül rahatlığıyla herkese tavsiye ederim. 🐾😊</p><div class="who"><span class="av" aria-hidden="true">M</span><div><b>Melisa K.</b><small>Google yorumu</small></div></div></article>
+        <article class="rev"><div class="stars" aria-label="5 yıldız">★★★★★</div><p>Tatil için gideceğimiz otel köpek almadığı için 5 gün otel hizmeti aldık. İlk defa başkasına bırakacağımız için tedirgindik, ta ki yerlerine ve kendilerini görene kadar hem biz hem de köpeğimiz güven duydu. Geri aldığımızda daha sosyal ve gayet sağlıklı olması bizi mutlu etti. İyi bir işletme, kutlarım.</p><div class="who"><span class="av" aria-hidden="true">U</span><div><b>Ulaş A.</b><small>Google yorumu</small></div></div></article>
+        <article class="rev"><div class="stars" aria-label="5 yıldız">★★★★★</div><p>Aniden çıkan şehir dışı seyahatimizde tavsiye üzerine gittiğimiz pansiyonda yavrumuzu gönül rahatlığıyla teslim edebildik. Bize yaklaşımları gerçekten çok güzeldi. Bundan sonra sürekli sizinleyiz.</p><div class="who"><span class="av" aria-hidden="true">A</span><div><b>Asi Ç.</b><small>Google yorumu</small></div></div></article>
+        <article class="rev"><div class="stars" aria-label="5 yıldız">★★★★★</div><p>Kendileriyle yollarımız yeni kesişti, bu kadar geç karşılaştığım için üzgünüm. Tüm bakımları, traşı, kulak temizliği hepsi dört dörtlük yapıldı. Hatta veterinere danışmamız gereken bir konuyu bile fark etmemizi sağladılar. Aslında söylenecek çok bir şey yok; oğlumun başkasının kucağında, hele ki ilk kez gördüğü birinde böyle mutlu olduğunu görmemiştim. Bundan sonrasında sık sık buradayız, elinize emeğinize sağlık. Güvenle çocuklarınızı emanet edebileceğiniz bir yer.</p><div class="who"><span class="av" aria-hidden="true">C</span><div><b>Ceyla K.</b><small>Google yorumu</small></div></div></article>
+      </div>
+    </div>
+  </section>
+
   <section class="contact" id="iletisim">
     <div class="wrap grid">
-      <div class="info">
+      <div class="info rv">
         <h2>Bize ulaşın</h2>
         <p class="big">Randevu ve fiyat bilgisi için WhatsApp’tan yazabilir ya da arayabilirsiniz.</p>
-        <div class="rows">
-          <a class="row" href="https://wa.me/905382007598?text=Merhaba%2C%20Lios%20Pet%20Kuaf%C3%B6r%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener"><span class="i">💬</span><span>WhatsApp<small>0538 200 75 98</small></span></a>
+        <div class="rows" data-stagger>
+          <a class="row" href="https://wa.me/905382007598?text=Merhaba%2C%20randevu%20almak%20istiyorum." target="_blank" rel="noopener"><span class="i">💬</span><span>Hemen randevu al<small>WhatsApp: 0538 200 75 98</small></span></a>
           <a class="row" href="tel:+905382007598"><span class="i">📞</span><span>Telefon<small>0538 200 75 98</small></span></a>
           <a class="row" href="https://www.instagram.com/liospetkuafor/" target="_blank" rel="noopener"><span class="i">📷</span><span>Instagram<small>@liospetkuafor</small></span></a>
           <a class="row" href="https://maps.app.goo.gl/n6jwFkf7iyX6t8SB8" target="_blank" rel="noopener"><span class="i">📍</span><span>Yol tarifi al<small>Google Haritalar’da aç</small></span></a>
         </div>
       </div>
-      <div class="map">
-        <iframe title="Lios Pet Kuaför harita konumu" src="https://maps.google.com/maps?q=41.0660357,28.6903254&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      <div class="map rv">
+        <iframe title="Bahçeşehir PetLios harita konumu" src="https://maps.google.com/maps?q=41.0660357,28.6903254&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
       </div>
     </div>
   </section>
@@ -222,15 +314,26 @@ footer a{color:#fff}
 
 <footer>
   <div class="wrap">
-    <span>© 2026 Lios Pet Kuaför</span>
-    <span>Web tasarım: <a href="https://www.hostmedya.com.tr" target="_blank" rel="noopener">Host Medya</a></span>
+    <span>© 2026 Bahçeşehir PetLios</span>
+    <span>Bu site <a href="https://hostmedya.com.tr/" target="_blank" rel="noopener">Host Medya</a> tarafından tasarlanmıştır.</span>
   </div>
 </footer>
 
-<a class="wa-float" href="https://wa.me/905382007598?text=Merhaba%2C%20Lios%20Pet%20Kuaf%C3%B6r%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener" aria-label="WhatsApp ile yazın">
+<a class="wa-float" href="https://wa.me/905382007598?text=Merhaba%2C%20randevu%20almak%20istiyorum." target="_blank" rel="noopener" aria-label="WhatsApp ile hemen randevu al">
   <svg viewBox="0 0 32 32" fill="#fff" aria-hidden="true"><path d="M16.04 3C9.4 3 4 8.38 4 15.02c0 2.12.55 4.18 1.6 6L4 28l7.17-1.88a12.02 12.02 0 0 0 4.87 1.02h.01C22.68 27.14 28 21.76 28 15.12 28 8.4 22.68 3 16.04 3Zm0 21.98h-.01a10 10 0 0 1-5.1-1.4l-.37-.22-4.25 1.12 1.13-4.14-.24-.38a9.96 9.96 0 0 1-1.54-5.3c0-5.5 4.5-9.98 10.03-9.98 5.52 0 10.02 4.48 10.02 9.98 0 5.52-4.5 10.32-9.67 10.32Zm5.5-7.46c-.3-.15-1.78-.88-2.06-.98-.28-.1-.48-.15-.68.15-.2.3-.78.98-.95 1.18-.18.2-.35.22-.65.08-.3-.15-1.28-.47-2.43-1.5-.9-.8-1.5-1.8-1.68-2.1-.18-.3-.02-.46.13-.6.14-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.68-1.64-.93-2.25-.25-.58-.5-.5-.68-.5h-.58c-.2 0-.53.08-.8.38-.28.3-1.05 1.03-1.05 2.5s1.08 2.9 1.23 3.1c.15.2 2.1 3.2 5.08 4.5.7.3 1.26.48 1.7.62.72.23 1.37.2 1.88.12.58-.08 1.78-.73 2.03-1.43.25-.7.25-1.3.18-1.43-.08-.12-.28-.2-.58-.35Z"/></svg>
-  <span>WhatsApp</span>
+  <span>Hemen randevu al</span>
 </a>
 
+<script>
+(function(){
+  document.querySelectorAll('[data-stagger]').forEach(function(g){
+    Array.prototype.forEach.call(g.children,function(c,i){c.classList.add('rv');c.style.setProperty('--d',(i*0.09)+'s')});
+  });
+  var els=document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
 </body>
 </html>
